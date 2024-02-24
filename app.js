@@ -1,4 +1,4 @@
-Pi.init({ version: "2.0" }); // Initialize the SDK 
+Pi.init({ version: "2.0", sandbox: true }); // Initialize the SDK 
 
 const appStatus = document.getElementById('app-status'); 
 const payButton = document.getElementById('payButton'); 
