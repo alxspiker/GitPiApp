@@ -21,9 +21,11 @@
   <button onclick="scanQrCode()">Scan QR code</button>
 
   <script>
-    Pi.init({ version: "2.0", sandbox: false });
-
     // Example function
+    const initialize = () => {
+      Pi.init({ version: "2.0", sandbox: false });
+    };
+
     const authenticate = () => {
       Pi.authenticate(['payments'], (error, result) => {
         if (error) {
