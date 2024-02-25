@@ -118,17 +118,6 @@
         alert(result);
       });
     };
-
-    var interval = setInterval(function() {
-      console.log('Interval Running');
-      if( Pi == "undefined" || Pi == ""){
-        //Do Something While Waiting / Spinner Gif etc.
-      }else{
-        console.log('Interval Stopped');
-        clearInterval(interval);
-        initialize();
-      }
-    }, 1000);
   </script>
 </body>
 </html>
