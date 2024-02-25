@@ -29,8 +29,20 @@
   </pre>
 
   <script>
+    function processVariable(yourVariable) {
+      if (typeof yourVariable === 'object' && !Array.isArray(yourVariable) && yourVariable !== null) {
+          // Convert object to JSON
+          const jsonString = JSON.stringify(yourVariable);
+          return jsonString;
+      } else {
+          // Keep as text
+          return yourVariable;
+      }
+    }
+
     const update_return = (text) => {
-      document.getElementById("return").textContent=Object.toString({"returned":text});
+      text = processVariable(text);
+      document.getElementById("return").textContent=text;
     };
 
     const initialize = () => {
