@@ -9,7 +9,7 @@
 </head>
 <body>
   <h1>Pi Network SDK Example</h1>
-  <p>Should initialize automatically now!!</p>
+  <p>Should initialize automatically now!</p>
   <button onclick="initialize()">Initialize</button>
   <button onclick="authenticate()">Authenticate</button>
   <button onclick="checkUserHasMiningApp()">Check if user has Mining App</button>
@@ -25,8 +25,15 @@
   <button onclick="requestPermission()">Request permission</button>
   <button onclick="scanQrCode()">Scan QR code</button>
 
+  <pre id="return">
+
+  </pre>
+
   <script>
-    // Example function
+    const update_return = (text) => {
+      document.getElementById("return").textContent=text.toString();
+    };
+
     const initialize = () => {
       Pi.init({ version: "2.0", sandbox: false });
     };
@@ -34,28 +41,28 @@
     const authenticate = () => {
       Pi.authenticate(['payments'], (error, result) => {
         if (error) {
-          alert(error);
+          update_return(error);
         } else {
-          alert(result);
+          update_return(result);
         }
       });
     };
 
     const checkUserHasMiningApp = () => {
       Pi.checkUserHasMiningApp().then((result) => {
-        alert(result);
+        update_return(result);
       });
     };
 
     const checkUserHasPiBrowser = () => {
       Pi.checkUserHasPiBrowser().then((result) => {
-        alert(result);
+        update_return(result);
       });
     };
 
     const copyText = () => {
       Pi.copyText('Hello world!').then(() => {
-        alert('Text copied to clipboard.');
+        update_return('Text copied to clipboard.');
       });
     };
 
@@ -66,56 +73,56 @@
         to_address: 'my_pi_address'
       }, (error, result) => {
         if (error) {
-          alert(error);
+          update_return(error);
         } else {
-          alert(result);
+          update_return(result);
         }
       });
     };
 
     const getPiHostAppName = () => {
-      alert(Pi.getPiHostAppName());
+      update_return(Pi.getPiHostAppName());
     };
 
     const getPiHostAppInfo = () => {
       Pi.getPiHostAppInfo().then((result) => {
-        alert(result);
+        update_return(result);
       });
     };
 
     const nativeFeaturesList = () => {
       Pi.nativeFeaturesList().then((result) => {
-        alert(result);
+        update_return(result);
       });
     };
 
     const openConversation = () => {
       Pi.openConversation('my_conversation_id').then(() => {
-        alert('Conversation opened.');
+        update_return('Conversation opened.');
       });
     };
 
     const openShareDialog = () => {
       Pi.openShareDialog('My title', 'My sharing message').then(() => {
-        alert('Share dialog opened.');
+        update_return('Share dialog opened.');
       });
     };
 
     const openUrlInSystemBrowser = () => {
       Pi.openUrlInSystemBrowser('https://www.minepi.com').then(() => {
-        alert('URL opened in system browser.');
+        update_return('URL opened in system browser.');
       });
     };
 
     const requestPermission = () => {
       Pi.requestPermission('camera').then((result) => {
-        alert(result);
+        update_return(result);
       });
     };
 
     const scanQrCode = () => {
       Pi.scanQrCode().then((result) => {
-        alert(result);
+        update_return(result);
       });
     };
 
