@@ -26,28 +26,28 @@
     const authenticate = () => {
       Pi.authenticate(['payments'], (error, result) => {
         if (error) {
-          console.error(error);
+          alert(error);
         } else {
-          console.log(result);
+          alert(result);
         }
       });
     };
 
     const checkUserHasMiningApp = () => {
       Pi.checkUserHasMiningApp().then((result) => {
-        console.log(result);
+        alert(result);
       });
     };
 
     const checkUserHasPiBrowser = () => {
       Pi.checkUserHasPiBrowser().then((result) => {
-        console.log(result);
+        alert(result);
       });
     };
 
     const copyText = () => {
       Pi.copyText('Hello world!').then(() => {
-        console.log('Text copied to clipboard.');
+        alert('Text copied to clipboard.');
       });
     };
 
@@ -58,56 +58,56 @@
         to_address: 'my_pi_address'
       }, (error, result) => {
         if (error) {
-          console.error(error);
+          alert(error);
         } else {
-          console.log(result);
+          alert(result);
         }
       });
     };
 
     const getPiHostAppName = () => {
-      console.log(Pi.getPiHostAppName());
+      alert(Pi.getPiHostAppName());
     };
 
     const getPiHostAppInfo = () => {
       Pi.getPiHostAppInfo().then((result) => {
-        console.log(result);
+        alert(result);
       });
     };
 
     const nativeFeaturesList = () => {
       Pi.nativeFeaturesList().then((result) => {
-        console.log(result);
+        alert(result);
       });
     };
 
     const openConversation = () => {
       Pi.openConversation('my_conversation_id').then(() => {
-        console.log('Conversation opened.');
+        alert('Conversation opened.');
       });
     };
 
     const openShareDialog = () => {
       Pi.openShareDialog('My title', 'My sharing message').then(() => {
-        console.log('Share dialog opened.');
+        alert('Share dialog opened.');
       });
     };
 
     const openUrlInSystemBrowser = () => {
       Pi.openUrlInSystemBrowser('https://www.minepi.com').then(() => {
-        console.log('URL opened in system browser.');
+        alert('URL opened in system browser.');
       });
     };
 
     const requestPermission = () => {
       Pi.requestPermission('camera').then((result) => {
-        console.log(result);
+        alert(result);
       });
     };
 
     const scanQrCode = () => {
       Pi.scanQrCode().then((result) => {
-        console.log(result);
+        alert(result);
       });
     };
 
