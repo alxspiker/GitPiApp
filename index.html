@@ -9,7 +9,7 @@
 </head>
 <body>
   <h1>Pi Network SDK Example</h1>
-  <p>Should initialize automatically now!</p>
+  <p>Should initialize automatically now!!</p>
   <button onclick="initialize()">Initialize</button>
   <button onclick="authenticate()">Authenticate</button>
   <button onclick="checkUserHasMiningApp()">Check if user has Mining App</button>
@@ -118,6 +118,17 @@
         alert(result);
       });
     };
+
+    var interval = setInterval(function() {
+      console.log('Interval Running');
+      if( Pi == "undefined" || Pi == ""){
+        //Do Something While Waiting / Spinner Gif etc.
+      }else{
+        console.log('Interval Stopped');
+        clearInterval(interval);
+        initialize();
+      }
+    }, 1000);
   </script>
 </body>
 </html>
