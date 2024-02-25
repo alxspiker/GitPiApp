@@ -81,6 +81,7 @@
       Pi.createPayment({
         amount: 10,
         memo: 'This is a test payment.',
+        metadata: {"invoice":1234},
         to_address: 'GBFWPBQ7TITKHVGDYYWZ6L2K4MX3QQU6QEVFCCQRE2SRVIW6NBAK6SYU'
       }, (error, result) => {
         if (error) {
