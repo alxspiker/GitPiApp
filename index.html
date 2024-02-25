@@ -119,10 +119,16 @@
       });
     };
 
-    // Check if a new cache is available on page load.
-    window.addEventListener('load', function(e) {
-      initialize();
-    }, false);
+    var interval = setInterval(function() {
+      console.log('Interval Running');
+      if( Pi == "undefined" || Pi == ""){
+        //Do Something While Waiting / Spinner Gif etc.
+      }else{
+        console.log('Interval Stopped');
+        clearInterval(interval);
+        initialize();
+      }
+    }, 1000);
   </script>
 </body>
 </html>
