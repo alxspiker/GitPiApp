@@ -77,20 +77,17 @@
       });
     };
 
-    const createPayment = () => {
-      Pi.createPayment({
+    async function createPayment(){
+      var payment = await Pi.createPayment({
         amount: 10,
         memo: 'This is a test payment.',
         metadata: {"invoice":1234},
         to_address: 'GBFWPBQ7TITKHVGDYYWZ6L2K4MX3QQU6QEVFCCQRE2SRVIW6NBAK6SYU'
-      }, (error, result) => {
-        if (error) {
-          update_return(error);
-        } else {
-          update_return(result);
-        }
-      });
-    };
+      }, (function(error){
+        update_return(error);
+      }));
+      update_return(payment);
+    }
 
     const getPiHostAppName = () => {
       update_return(Pi.getPiHostAppName());
