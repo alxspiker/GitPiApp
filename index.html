@@ -160,16 +160,27 @@
     };
 
     async function createPayment(){
-      var payment = await Pi.createPayment({
-        amount: 10,
-        memo: 'This is a test payment.',
-        metadata: {"invoice":1234},
-        to_address: 'GBFWPBQ7TITKHVGDYYWZ6L2K4MX3QQU6QEVFCCQRE2SRVIW6NBAK6SYU'
-      }, (error) => {
-        update_return('create-payment', error);
-      });
-      update_return('create-payment', payment);
-    }
+  var payment = await Pi.createPayment({
+    amount: 10,
+    memo: 'This is a test payment.',
+    metadata: {"invoice":1234},
+    to_address: 'GBFWPBQ7TITKHVGDYYWZ6L2K4MX3QQU6QEVFCCQRE2SRVIW6NBAK6SYU'
+  }, (error) => {
+    update_return('create-payment', error);
+  });
+  
+  payment.onReadyForServerApproval((paymentId) => {
+    // Server-side approval logic here
+    
+    payment.onReadyForServerCompletion((paymentId, txid) => {
+      // Server-side completion logic here
+      
+      payment.complete();
+    });
+  });
+  
+  update_return('create-payment', payment);
+}
 
     const getPiHostAppName = () => {
       update_return('get-pi-host-app-name', Pi.getPiHostAppName());
