@@ -115,7 +115,13 @@
     <div class="feature-output"></div>
   </div>
 
+  <button onclick="testcode()">Test Code</button>
+
 <script>
+    function testcode(){
+      Pi.SDK.openConsentModal();
+    }
+
     function processVariable(yourVariable) {
       if (typeof yourVariable === 'object' && !Array.isArray(yourVariable) && yourVariable !== null) {
           // Convert object to JSON
