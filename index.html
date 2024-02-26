@@ -38,6 +38,11 @@
     <div class="feature-output"></div>
   </div>
 
+  <div class="feature" id="incomplete">
+    <h2 class="feature-title">Incomplete Payment Found</h2>
+    <div class="feature-output"></div>
+  </div>
+
   <div class="feature" id="check-user-has-mining-app">
     <h2 class="feature-title">Check if user has Mining App</h2>
     <button onclick="checkUserHasMiningApp()">Check if user has Mining App</button>
@@ -131,13 +136,15 @@
       Pi.init({ version: "2.0", sandbox: false });
     };
 
+    function onIncompletePaymentFound(payment) {
+      update_return('incomplete', payment);
+    };
+
     const authenticate = () => {
-      Pi.authenticate(['payments'], (error, result) => {
-        if (error) {
-          update_return('authenticate', error);
-        } else {
-          update_return('authenticate', result);
-        }
+      Pi.authenticate(['payments'], onIncompletePaymentFound).then(function(auth) {
+        update_return('authenticate', auth);
+      }).catch(function(error) {
+        update_return('authenticate', error);
       });
     };
 
